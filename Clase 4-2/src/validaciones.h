@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include "Transformaciones.h"
 
+
+
 float ValidacionTemperaturaFyC (float temperaturaF);
 int ValidacionTemperaturaCyF (float temperaturaC);
 

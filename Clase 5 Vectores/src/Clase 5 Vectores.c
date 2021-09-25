@@ -13,13 +13,19 @@
 
 int main(void) {
 
-	int v[5],i;
+	setbuf(stdout,NULL);
 
-	    for(i=0; i<5; i++){
+	int v[5]; //Cantidad de elementos que va a tener el vector
+	int i;
 
-	        printf("Ingrese el valor del vector: ");
-	        scanf("%d",&v[i]);
-	    }
+	// Secuencial
+    for(i=0; i<5; i++){
+
+        printf("Ingrese el valor del vector %d:", i+1);
+        scanf("%d",&v[i]);
+    }
+
+
 
 	return EXIT_SUCCESS;
 }
