@@ -18,12 +18,14 @@ int main(void) {
 
 	setbuf(stdout, NULL);
 
+	system("color 70");
+
 	int opcion;
 	float resultado1,resultado2,resultado3,resultado4;
 	int resultado5,resultado6;
 
-	float operando1;
-	float operando2;
+	float operando1=0;
+	float operando2=0;
 
 	int errorDividir;
 
@@ -36,9 +38,27 @@ int main(void) {
 		//Muestro las opciones que tiene el usuario
 
     	printf("\n Elija una opcion 1/2/3/4/5:\n");
-    	printf(" 1)--- Ingresar 1er operando= %.2f\n", operando1);
-    	printf(" 2)--- Ingresar 2do operando= %.2f\n", operando2);
-    	printf(" 3)--- Calcular todas las operaciones---\n");
+
+    	if(operando1 == 0){
+
+    		printf(" 1)--- Ingresar 1er operando  \n");
+    	}
+    	else{
+
+    		printf(" 1)--- Ingresar 1er operando = %.2f\n", operando1);
+    	}
+
+    	if(operando2 == 0){
+
+    		printf(" 2)--- Ingresar 2do operando  \n");
+    	}
+    	else{
+
+			printf(" 2)--- Ingresar 2do operando = %.2f\n", operando2);
+    	}
+
+
+			printf(" 3)--- Calcular todas las operaciones---\n");
     	printf(" 4)--- Informar resultados----\n");
     	printf(" 5)--- Salir---\n");
 
@@ -74,14 +94,20 @@ int main(void) {
 			system("cls");
 			break;
 		case 4:
+
+
 			//informo resultados de las operaciones
 			printf("El resultado de %.2f + %.2f  es: %.2f\n", operando1, operando2, resultado1);
 			printf("El resultado de %.2f - %.2f es: %.2f\n", operando1, operando2, resultado2);
+
 			if(errorDividir==0){
+
 				printf("No se puede dividir entre cero \n");
 			}else{
+
 				printf("El resultado de %.2f / %.2f es: %.2f\n", operando1, operando2, resultado3);
 			}
+
 			printf("El resultado de %.2f * %.2f es: %.2f \n ", operando1, operando2, resultado4);
 			if(operando1<0 || ValidarEntero(operando1)==0 || operando1>=12 ){
 

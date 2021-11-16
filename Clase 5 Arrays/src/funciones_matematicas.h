@@ -7,6 +7,9 @@
 
 #ifndef FUNCIONES_MATEMATICAS_H_
 #define FUNCIONES_MATEMATICAS_H_
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
 
 /// @param operando1 Recibe el primer operando
 /// @param operando2 Recibe un segundo operando
@@ -30,9 +33,20 @@ int CalcularFactorial (int numeroIngresado);
 /// @param numeroIngresado recibe un flotante y se resta el mismo con un int
  /// @return si el resultado es 1 es flotante si es 0 es entero
 int ValidarEntero (float numeroIngresado);
-
-
-
-
+/// @param mensaje "ingrese si o si un numero entero"
+/// @param mensajeError "en caso de no ser entero la propia funcion valida que sea entero y lo vuelve a pedir"
+/// @return me devuleve si o si un numero entero de cualquier numero y l oasigna a una varible
+int IngresarNumeroEntero (char* mensaje, char *mensajeError);
+/// @param mensaje
+/// @param mensajeError
+/// @return
+float IngresarNumeroFloat (char* mensaje, char *mensajeError);
+/// @param listaEnteros
+/// @param tam
+void CargarNumeros (int listaEnteros[], int tam );
+/// @param minimo
+/// @param maximo
+/// @return
+int ValidarRango (int minimo, int maximo);
 
 #endif /* FUNCIONES_MATEMATICAS_H_ */
