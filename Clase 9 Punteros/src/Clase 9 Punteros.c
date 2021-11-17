@@ -15,13 +15,32 @@ int main(void) {
 
 	setbuf(stdout,NULL);
 
-	int a;
+	int a=5;
 	int b;
-	printf("Size a: %lld\n",sizeof(a));
-	printf("Direccion a: %p\n",&a);
+	int* p;
 
-	printf("Size a: %lld\n",sizeof(b));
-	printf("Dirrecion b: %p\n",&b);
+	printf("Size a: %lld\n",sizeof(a)); //4
+	printf("Direccion a: %p\n",&a); // direccion de memoria de a
+
+	printf("Size b: %lld\n",sizeof(b)); //4
+	printf("Dirrecion b: %p\n",&b); // direccion de memoria de b
+
+	p=&a;
+
+	printf("\n%p\n", &a);
+	printf("%d\n", *p);
+	printf("%p\n", p);
+	printf("%p\n", &p);
+
+	/*
+	 * direccion de memoria de a
+	 * El contenido de la direccion de memoria que apunta la variable p
+	 * direccio de memoria de a
+	 * direccion de memoria de p
+	 */
+
+
+
 
 	return EXIT_SUCCESS;
 }

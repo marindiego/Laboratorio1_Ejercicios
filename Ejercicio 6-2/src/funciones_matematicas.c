@@ -377,13 +377,13 @@ void ContarNumerosRepetidos (int listaValores[], int tam){
 		printf("Se repiten %d numeros \n", contadorRepetidos);
 	}
 }
-int OrdenarNumerosEnterosCreciente (int* listaEnteros, int tam){
+int OrdenarNumerosEnterosCreciente (int* listaEnteros[], int tam){
 
 		int flagSwap;
 		int i;
 		int contador=0;
 		int retorno=0;
-		int buffer;
+		int *buffer;
 
 
 		if(listaEnteros!=NULL && tam>=0){
@@ -394,8 +394,6 @@ int OrdenarNumerosEnterosCreciente (int* listaEnteros, int tam){
 
 					contador++;
 					if(listaEnteros[i]>listaEnteros[i+1] ){
-
-
 
 						flagSwap=1;
 						buffer=listaEnteros[i];
@@ -410,7 +408,7 @@ int OrdenarNumerosEnterosCreciente (int* listaEnteros, int tam){
 		}
 		return retorno;
 }
-int OrdenarNumerosEnterosDecreciente (int listaEnteros[], int tam){
+int OrdenarNumerosEnterosDecreciente (int* listaEnteros[], int tam){
 
 		int flagSwap;
 		int i;
@@ -449,7 +447,7 @@ void MostrarNumerosEnteros (int listaEnteros[], int tam, int numeroExcluyenteArr
 
 			if(listaEnteros[i]!=numeroExcluyenteArray){
 
-				printf("[DEBUG] Indice: %d - Valor %d\n", i, listaEnteros[i]);
+				printf("[DEBUG] Indice: %d - Valor %d\n", i+1, listaEnteros[i]);
 			}
 		}
 	}

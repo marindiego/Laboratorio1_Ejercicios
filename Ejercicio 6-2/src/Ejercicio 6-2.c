@@ -24,14 +24,23 @@ int main(void) {
 
 
 
-	int numerosIngresado [T]={7, 5, 6, 10, 18, 29, -1,-5,-9,-12};
+	int numerosIngresado [T]={-1,3,-9,-12, 7, -5, 6, 10, -8, 5};
 	int i;
 	int numerosNegativos [T];
+	int* pArrayNegativos [T];
 	int numerosPositivos [T];
+	int* pArrayPositivos [T];
 
 	//CargarNumerosEnteros(numerosIngresado, T, "Ingrese un numero positivo o negativo " , " Reingrese un entero ", -1000, 1000);
 	InicializarVectorEnteroExcluyente(numerosPositivos, T, 0);
 	InicializarVectorEnteroExcluyente(numerosNegativos, T, 0);
+
+
+	for (i = 0; i < T; ++i) {
+
+		pArrayPositivos[i]=&numerosPositivos[i];
+		pArrayNegativos[i]=&numerosNegativos[i];
+	}
 
 	for(i=0; i<T; i++){
 
@@ -45,15 +54,13 @@ int main(void) {
 		}
 	}
 
-
-
 		printf("Listado 1\n\n");
-		OrdenarNumerosEnterosCreciente(numerosPositivos, T);
+		OrdenarNumerosEnterosCreciente(pArrayPositivos, T);
 		MostrarNumerosEnteros(numerosPositivos, T, 0);
 
 
 		printf("\nListado 2\n\n");
-		OrdenarNumerosEnterosDecreciente(numerosNegativos, T);
+		OrdenarNumerosEnterosDecreciente(pArrayNegativos, T);
 		MostrarNumerosEnteros(numerosNegativos, T, 0);
 
 

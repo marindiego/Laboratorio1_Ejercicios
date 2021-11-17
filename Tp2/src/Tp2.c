@@ -28,9 +28,9 @@ int main(void) {
 	int modificarEmpleados;
 	int infomarEmpleados;
 
-	emp_HardcodearEmployees(arrayEmpleados, t_Emp); //Harcodear datos ACTIVAR funcion
+	//emp_HardcodearEmployees(arrayEmpleados, t_Emp); //Harcodear datos ACTIVAR funcion
 
-	//emp_initEmployees(arrayEmpleados, t_Emp);  //hardcodear datos COMENTAR funcion
+	emp_initEmployees(arrayEmpleados, t_Emp);  //hardcodear datos COMENTAR funcion
 
 
 	printf( "Nombre: DIEGO MARIN 1(c)       \n"
