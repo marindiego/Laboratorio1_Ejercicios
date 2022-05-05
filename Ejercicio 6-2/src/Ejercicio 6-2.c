@@ -24,46 +24,46 @@ int main(void) {
 
 
 
-	int numerosIngresado [T]={-1,3,-9,-12, 7, -5, 6, 10, -8, 5};
-	int i;
-	int numerosNegativos [T];
-	int* pArrayNegativos [T];
-	int numerosPositivos [T];
-	int* pArrayPositivos [T];
+		int numerosIngresado [T]={-1,3,-9,-12, 7, -5, 6, 10, -8, 5};
+		int i;
+		int numerosNegativos [T];
+		int* pArrayNegativos [T];
+		int numerosPositivos [T];
+		int* pArrayPositivos [T];
 
-	//CargarNumerosEnteros(numerosIngresado, T, "Ingrese un numero positivo o negativo " , " Reingrese un entero ", -1000, 1000);
-	InicializarVectorEnteroExcluyente(numerosPositivos, T, 0);
-	InicializarVectorEnteroExcluyente(numerosNegativos, T, 0);
+		//CargarNumerosEnteros(numerosIngresado, T, "Ingrese un numero positivo o negativo " , " Reingrese un entero ", -1000, 1000);
+		InicializarVectorEnteroExcluyente(numerosPositivos, T, 0);
+		InicializarVectorEnteroExcluyente(numerosNegativos, T, 0);
 
 
-	for (i = 0; i < T; ++i) {
+		for (i = 0; i < T; ++i) {
 
-		pArrayPositivos[i]=&numerosPositivos[i];
-		pArrayNegativos[i]=&numerosNegativos[i];
-	}
-
-	for(i=0; i<T; i++){
-
-		if(VereficarSigno(numerosIngresado[i])==0){
-
-			numerosPositivos[i]=numerosIngresado[i];
+			pArrayPositivos[i]=&numerosPositivos[i];
+			pArrayNegativos[i]=&numerosNegativos[i];
 		}
-		if(VereficarSigno(numerosIngresado[i])==-1){
 
-			numerosNegativos[i]=numerosIngresado[i];
+		for(i=0; i<T; i++){
+
+			if(VereficarSigno(numerosIngresado[i])==0){
+
+				numerosPositivos[i]=numerosIngresado[i];
+			}
+			if(VereficarSigno(numerosIngresado[i])==-1){
+
+				numerosNegativos[i]=numerosIngresado[i];
+			}
 		}
-	}
 
-		printf("Listado 1\n\n");
-		OrdenarNumerosEnterosCreciente(pArrayPositivos, T);
-		MostrarNumerosEnteros(numerosPositivos, T, 0);
-
-
-		printf("\nListado 2\n\n");
-		OrdenarNumerosEnterosDecreciente(pArrayNegativos, T);
-		MostrarNumerosEnteros(numerosNegativos, T, 0);
+			printf("Listado 1\n\n");
+			OrdenarNumerosEnterosCreciente(pArrayPositivos, T);
+			MostrarNumerosEnteros(numerosPositivos, T, 0);
 
 
+			printf("\nListado 2\n\n");
+			OrdenarNumerosEnterosDecreciente(pArrayNegativos, T);
+			MostrarNumerosEnteros(numerosNegativos, T, 0);
 
-	return EXIT_SUCCESS;
+
+
+		return EXIT_SUCCESS;
 }

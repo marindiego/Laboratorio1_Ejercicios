@@ -59,7 +59,7 @@ int main(void) {
 	// i=1 no i=0 por un Bug en la Carga de Datos
 
 
-	//APPLE_InicializarProducto(listaProducto, TAM);
+	APPLE_InicializarProducto(listaProducto, TAM);
 
 	do {
 

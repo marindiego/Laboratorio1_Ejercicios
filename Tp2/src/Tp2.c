@@ -18,19 +18,19 @@ int main(void) {
 	setbuf(stdout, NULL);
 
 
-	Employee arrayEmpleados[t_Emp];
+	Cliente arrayEmpleados[t_Emp];
 
 	int opcion;
-	int salir=0;
+	int salir=1;
 	int id=101;
 	int altaEmpleados;
 	int bajaEmpleados;
 	int modificarEmpleados;
 	int infomarEmpleados;
 
-	//emp_HardcodearEmployees(arrayEmpleados, t_Emp); //Harcodear datos ACTIVAR funcion
+	emp_HardcodearEmployees(arrayEmpleados, t_Emp); //Harcodear datos ACTIVAR funcion
 
-	emp_initEmployees(arrayEmpleados, t_Emp);  //hardcodear datos COMENTAR funcion
+	//clie_initEmployees(arrayEmpleados, t_Emp);  //hardcodear datos COMENTAR funcion
 
 
 	printf( "Nombre: DIEGO MARIN 1(c)       \n"
@@ -54,15 +54,18 @@ int main(void) {
 					"\t\t5) Salir\n"
 					""
 					"\n==============================================================================\n\n"
-					"\t\tOpcion: ", "\nError, opcion invalida\n\n", 0, 5, INT_MAX)==0)
+					"\t\tOpcion: ",
+					"\nError, opcion invalida\n\n", 0, 5, INT_MAX)==0)
 			{
 
 				switch (opcion) {
 
 				case 1:
 
-					if (emp_findEmptySpace(arrayEmpleados, t_Emp) >= 0) {
-						altaEmpleados = emp_AltaEmpleados(arrayEmpleados, t_Emp, &id);
+					if (emp_findEmptySpace(arrayEmpleados, t_Emp) >= 0)
+					{
+						altaEmpleados = clie_AltaEmpleados(arrayEmpleados, t_Emp, &id);
+
 						if (altaEmpleados == 0) {
 							printf("\n\t\tALTA COMPLETADA\n\n");
 						}
@@ -156,7 +159,7 @@ int main(void) {
 
 					printf("\nSalir Completado\n");
 					system("pause");
-					salir = 1;
+					salir = 0;
 					break;
 
 				default:
@@ -167,7 +170,7 @@ int main(void) {
 			}
 
 
-		} while ( salir == 0 );
+		} while (salir);
 
 
 	printf("\nAPLICACION CERRADA\n");

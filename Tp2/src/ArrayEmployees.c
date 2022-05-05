@@ -13,7 +13,7 @@
  * |----- FUNCIONES EXTRAS------|
  *
  */
-int emp_checkEmployee (Employee* list, int len){
+int emp_checkEmployee (Cliente* list, int len){
 
 	int i;
 	int respuesta=-1; // Pointer NULL or len < 0 or there is not space
@@ -29,13 +29,13 @@ int emp_checkEmployee (Employee* list, int len){
 	return respuesta;
 }
 
-int emp_HardcodearEmployees (Employee *list, int empleados){
+int emp_HardcodearEmployees (Cliente *list, int empleados){
 
 	int retorno=-1;
 	int i;
 	if(list!=NULL && empleados >= 0){
 		retorno=0;
-		Employee buffer[1000]=
+		Cliente buffer[1000]=
 				{{101,"Diego","Marin",10500,5,CARGADO},
 				{102,"Carla","Suarez",2500,9,CARGADO},
 				{103,"German","Scarafilo",4850,4,CARGADO},
@@ -57,7 +57,7 @@ int emp_HardcodearEmployees (Employee *list, int empleados){
 }
 
 
-int emp_initEmployees(Employee* list, int len){
+int clie_initEmployees(Cliente* list, int len){
 
 	int retorno=-1;
 	int i;
@@ -72,7 +72,7 @@ int emp_initEmployees(Employee* list, int len){
 	return retorno;
 }
 
-int emp_findEmptySpace (Employee* list, int len){
+int emp_findEmptySpace (Cliente* list, int len){
 
 	int index=-1;
 	int i;
@@ -89,7 +89,7 @@ int emp_findEmptySpace (Employee* list, int len){
 	return index;
 }
 
-int findEmployeeById(Employee* list, int len,int id){
+int findEmployeeById(Cliente* list, int len,int id){
 
 	int index=-1;
 	int i;
@@ -111,7 +111,7 @@ int emp_confirmDecision (char* mensaje){
 	int confirmar=-1;
 	int desicion;
 
-	if(mensaje!=NULL && utn_getNumero(&desicion, mensaje, "\nSolo 1 o 0\n", 0, 1, 10)==0)
+	if(mensaje!=NULL && utn_getNumero(&desicion, mensaje, "\nSolo 1 o 0\n", 0, 1, 1)==0)
 	{
 		if (desicion == 0) {
 			confirmar=0;
@@ -128,7 +128,7 @@ int emp_confirmDecision (char* mensaje){
 */
 
 
-int addEmployee(Employee* list, int len, int id, char name[], char lastName[],float salary,int sector){
+int addEmployee(Cliente* list, int len, int id, char name[], char lastName[],float salary,int sector){
 
 	int retorno=-1;
 	int index;
@@ -147,24 +147,24 @@ int addEmployee(Employee* list, int len, int id, char name[], char lastName[],fl
 	}
 	return retorno;
 }
-int emp_AltaEmpleados(Employee* list, int len, int* id){
+int clie_AltaEmpleados(Cliente* list, int len, int* id){
 
-	Employee buffer;
-	int retorno=-1;
+	Cliente buffer;
+	int retorno=-1;  //NULL or len <0
 	int localId = *id;
 
 	if (list!=NULL && len > 0  && id!=NULL)
 	{
 		retorno=1; //bad data entry
 
-		if( utn_getCharNombre(buffer.name, "Nombre: ", "", 0, 50)==0 &&
-		    utn_getCharNombre(buffer.lastName, "Apellido: ", "", 0,50)==0 &&
-			utn_getFloat(&buffer.salary, "Salario: ", "", 1, 10000000, 0)==0 &&
-			utn_getNumero(&buffer.sector, "Sector: ", "", 0, INT_MAX, 0)==0)
+		if( !utn_getCharNombre(buffer.name, "Nombre: ", "", 0, 50) &&
+		    !utn_getCharNombre(buffer.lastName, "Apellido: ", "", 0,50) &&
+			!utn_getFloat(&buffer.salary, "Salario: ", "", 1, 10000000, 0) &&
+			!utn_getNumero(&buffer.sector, "Sector: ", "", 0, INT_MAX, 0))
 		{
 			if (addEmployee(list, len, localId, buffer.name, buffer.lastName, buffer.salary, buffer.sector)==0)
 			{
-				retorno=0;
+				retorno=0; // Ok
 				(*id)++;
 			}
 		}
@@ -180,7 +180,7 @@ int emp_AltaEmpleados(Employee* list, int len, int* id){
  * |----- BAJA EMPLEADOS ---------|
  *
 */
-int emp_BajaEmpleados (Employee* list, int len){
+int emp_BajaEmpleados (Cliente* list, int len){
 
 	int retorno=-1; //NULL or len <0
 	int idIngresado;
@@ -206,16 +206,15 @@ int emp_BajaEmpleados (Employee* list, int len){
 	return retorno;
 }
 
-int removeEmployee(Employee* list, int len, int id){
+int removeEmployee(Cliente* list, int len, int id){
 
 	int retorno=-1;
 	int index;
 	if (list!=NULL && len>0 && id>0)
 	{
-		index= findEmployeeById(list, len, id);
-		if(index!=-1){
-			retorno=0;
+		if( (index= findEmployeeById(list, len, id)) >= 0 ){
 			list[index].isEmpty=VACIO;
+			retorno=0;
 		}
 	}
 
@@ -227,9 +226,9 @@ int removeEmployee(Employee* list, int len, int id){
  *  |------ MODIFICAR EMPLEADOS--------|
  */
 
-int emp_changeEmployeeSpace (Employee* list,int opcion , int index){
+int emp_changeEmployeeSpace (Cliente* list,int opcion , int index){
 
-	Employee buffer;
+	Cliente buffer;
 	int cambio=-1;
 	if (opcion>=1 && list[index].isEmpty==CARGADO)
 	{
@@ -281,7 +280,7 @@ int emp_changeEmployeeSpace (Employee* list,int opcion , int index){
 	return cambio;
 }
 
-int emp_ModificarEmpleados (Employee* list, int len){
+int emp_ModificarEmpleados (Cliente* list, int len){
 
 	int retorno=-3; //Pointer NULL or len <0
 	int idIngresado;
@@ -330,13 +329,13 @@ int emp_ModificarEmpleados (Employee* list, int len){
  *
  */
 
-int emp_orderEmployeesById (Employee* lista, int len){
+int emp_orderEmployeesById (Cliente* lista, int len){
 
 	int retorno=-1;
 	int i;
 	int contador=0;
 	int flagSwap;
-	Employee buffer;
+	Cliente buffer;
 	if( lista!=NULL &&  len>0 ){
 		do{
 			flagSwap=0;
@@ -359,13 +358,13 @@ int emp_orderEmployeesById (Employee* lista, int len){
 	return retorno;
 }
 
-int sortEmployees(Employee* lista, int len, int order){
+int sortEmployees(Cliente* lista, int len, int order){
 
 	int retorno=-1;
 	int i;
 	int contador=0;
 	int flagSwap;
-	Employee auxPay;
+	Cliente auxPay;
 
 	if( lista!=NULL &&  len > 0 && order >0 && emp_checkEmployee(lista, len)== 0 ){
 
@@ -423,7 +422,7 @@ int sortEmployees(Employee* lista, int len, int order){
 	return retorno;
 }
 
-int printEmployee(Employee* list){
+int printEmployee(Cliente* list){
 
 	int retorno=-1;
 
@@ -438,7 +437,7 @@ int printEmployee(Employee* list){
 }
 
 
-int printEmployees(Employee* list, int length){
+int printEmployees(Cliente* list, int length){
 
 	int retorno=-1;
 	int i;
@@ -462,7 +461,7 @@ int printEmployees(Employee* list, int length){
 	return retorno;
 }
 
-int emp_InformarEmpleados (Employee* list, int len){
+int emp_InformarEmpleados (Cliente* list, int len){
 
 	int retorno=-1;// Pointer NULL or len <0
 	int opcionInformar;
@@ -519,7 +518,7 @@ int emp_InformarEmpleados (Employee* list, int len){
 	return retorno;
 }
 
-float emp_salaryEmployees (Employee* list, int len){
+float emp_salaryEmployees (Cliente* list, int len){
 
 	float salario=-1; // Pointer NULL or len < 0 or there is not space or no salary
 	int i;
@@ -533,7 +532,7 @@ float emp_salaryEmployees (Employee* list, int len){
 	return salario;
 }
 
-float emp_promedyEmployees (Employee* list, int len, float salario){
+float emp_promedyEmployees (Cliente* list, int len, float salario){
 
 	float promedio=-1;// Pointer NULL or len < 0 or there is not space or no salary
 	int contador=0;
@@ -551,7 +550,7 @@ float emp_promedyEmployees (Employee* list, int len, float salario){
 
 
 
-int emp_checkEmployeeSalary (Employee* list,int len, int order){
+int emp_checkEmployeeSalary (Cliente* list,int len, int order){
 
 	int retorno=-1;// Pointer NULL or len and order <0 or there is not space
 	float salario;

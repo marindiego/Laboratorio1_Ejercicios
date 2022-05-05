@@ -51,7 +51,7 @@ int VereficarParidad (int numeroIngresado);
 int VereficarSigno (int numeroIngresado);
 void SumarParidad (int listaEnteros[], int tam, int *pAcumuladorPares, int *pAcumuladorImpares);
 void CalcularMayorImpares (int listaEnteros [], int tam);
-void MostrarNumerosEnteros (int listaEnteros[], int tam, int numeroExcluyenteArray);
+void MostrarNumerosEnteros (int* listaEnteros, int tam, int numeroExcluyenteArray);
 void MostrarEnteroAleatorio (int listaEnteros[], int tam);
 void MostrarNumerosEnterosPares (int listaEnteros[], int tam);
 void MostrarPosicionEnterosImpares (int listadoEnteros[], int tam);
