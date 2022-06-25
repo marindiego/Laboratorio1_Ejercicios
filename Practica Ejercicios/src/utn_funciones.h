@@ -16,7 +16,6 @@
 #include <windows.h>
 #include "funciones_matematicasTP.h"
 
-
  // Pedir Datos
 int utn_getNumero(int* pResultado, char* mensaje,char* mensajeError,int minimo, int maximo, int reintentos);
 int utn_getCharNombre(char* pResultado, char* mensaje,char* mensajeError, int reintentos, int tamMax);

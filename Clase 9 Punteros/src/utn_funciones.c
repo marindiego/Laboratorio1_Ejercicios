@@ -171,7 +171,7 @@ static int esNumerica(char* cadena, int limite){
 
  	for( ;cadena[i]!='\0';i++){
 
- 		//if(cadena[i]<'A'||(cadena[i]>'Z'&&cadena[i]<'a')||(cadena[i]>'z'&&cadena[i]<'ñ')||cadena[i]>'Ñ'){
+ 		//if(cadena[i]<'A'||(cadena[i]>'Z'&&cadena[i]<'a')||(cadena[i]>'z'&&cadena[i]<'ï¿½')||cadena[i]>'ï¿½'){
 
  		if(		cadena[i]<32 ||
 				(cadena[i]>32&&cadena[i]<65) ||
@@ -908,6 +908,8 @@ void MenuEnteros (int listaEnteros[], int tam, char mensaje[], char mensajeError
 	int OrdenarVector;
 	int maximoArray;
 	float promedioPositivos;
+	int contadorVueltas;
+	int mostrarTipo;
 
 		do{
 			printf("Menu de Arrays: \n 1-Inicializar Array \n 2-Cargar Array \n 3-Mostrar Array\n 4-Calcular Promedio Array \n 5-Ordenar Array \n 6-Salir del Menu \n");
@@ -918,7 +920,7 @@ void MenuEnteros (int listaEnteros[], int tam, char mensaje[], char mensajeError
 			switch(opcion){
 
 			case 1:
-				printf("Ud. ha seleccionado lo opción 1-Inicializar \n");
+				printf("Ud. ha seleccionado lo opciï¿½n 1-Inicializar \n");
 				InicializarVectorEnteroExcluyente(listaEnteros, tam, 0);
 				printf("Inicializacion Completa!!!");
 				system("pause");
@@ -926,7 +928,7 @@ void MenuEnteros (int listaEnteros[], int tam, char mensaje[], char mensajeError
 				break;
 
 			case 2:
-				printf("“Ud. ha seleccionado lo opción 2-Cargar \n");
+				printf("ï¿½Ud. ha seleccionado lo opciï¿½n 2-Cargar \n");
 				tipoArray=IngresarNumeroEntero("\n 1 = Carga Secuencial 2 = Carga Aleatoria: ", "\n\a [ERROR]1 = Carga Secuencial 2 = Carga Aleatoria: ", 0, 3);
 				if(tipoArray==1){
 
@@ -946,9 +948,8 @@ void MenuEnteros (int listaEnteros[], int tam, char mensaje[], char mensajeError
 
 			case 3:
 
-				int mostrarTipo;
 
-				printf("“Ud. ha seleccionado lo opción 3-Mostrar \n");
+				printf("ï¿½Ud. ha seleccionado lo opciï¿½n 3-Mostrar \n");
 
 				mostrarTipo=IngresarNumeroEntero("\n 1 = Mostar Array, 2 = Mostrar Maximo Del Array:  ", "Reingrese las opciones sugeridas: ", 0, 3);
 
@@ -975,7 +976,7 @@ void MenuEnteros (int listaEnteros[], int tam, char mensaje[], char mensajeError
 				break;
 
 			case 4:
-				printf("“Ud. ha seleccionado lo opción 4-Calcular Promedio \n");
+				printf("ï¿½Ud. ha seleccionado lo opciï¿½n 4-Calcular Promedio \n");
 
 				if(PromedearVectorEnteroPositivos(listaEnteros, tam, &promedioPositivos)==1){
 
@@ -993,9 +994,8 @@ void MenuEnteros (int listaEnteros[], int tam, char mensaje[], char mensajeError
 
 			case 5:
 
-				int contadorVueltas;
 
-				printf("“Ud. ha seleccionado lo opción 5-Ordenar \n");
+				printf("ï¿½Ud. ha seleccionado lo opciï¿½n 5-Ordenar \n");
 
 				OrdenarVector=IngresarNumeroEntero("\n 1 = Creciente  2 = Decreciente: ", "\n\a[ERROR] 1 = Creciente  2 = Decreciente: ", 0, 3);
 
@@ -1046,7 +1046,7 @@ float ValidacionTemperaturaFyC (float temperaturaF){
 
 	while(temperaturaF<=0 || temperaturaF>=211 ){
 
-		printf("Error, reingrese una temperatura en fahrenheit entre 32ºF y 211.3ºF: ");
+		printf("Error, reingrese una temperatura en fahrenheit entre 32ï¿½F y 211.3ï¿½F: ");
 		scanf("%f", &temperaturaF);
 	}
 
@@ -1058,7 +1058,7 @@ int ValidacionTemperaturaCyF (float temperaturaC){
 
 	while(temperaturaC<=0 || temperaturaC>=100 ){
 
-		printf("Error, reingrese una temperatura en celsius entre 1ºC y 99ºC: ");
+		printf("Error, reingrese una temperatura en celsius entre 1ï¿½C y 99ï¿½C: ");
 		scanf("%f", &temperaturaC);
 	}
 
@@ -1078,7 +1078,7 @@ void PedirTemperaturaF (char mensaje[]){
 
 	gradosFaC=(temperaturaF-32.00)*0.556;
 
-	printf("%.2f °F son %.2f °C centigrados.\n", temperaturaFvalida,gradosFaC);
+	printf("%.2f ï¿½F son %.2f ï¿½C centigrados.\n", temperaturaFvalida,gradosFaC);
 
 
 }
@@ -1096,7 +1096,7 @@ void PedirTemperaturaC (char mensaje[]){
 
 	gradosCaF=(temperaturaC*9/5)+32;
 
-	printf("%d °C son %d °F centigrados.\n", temperaturaCvalida,gradosCaF);
+	printf("%d ï¿½C son %d ï¿½F centigrados.\n", temperaturaCvalida,gradosCaF);
 
 }
 

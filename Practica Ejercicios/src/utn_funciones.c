@@ -2,16 +2,17 @@
 
 #include "utn_funciones.h"
 
+
 // Getters
 static int getString ( char *cadena, int tamMax);
 static int getInt(int* pResultado);
 static int getChar(char* pResultado, int tam);
 static int getAlphaNumerico(char* pResultado, int tam);
+static int getFloat(float* pResultado);
 
 //Validaciones de un array de char
 static int esTextoBasico(char* cadena);
 static int esNumerica(char* cadena, int limite);
-static int getFloat(float* pResultado);
 static int validarFloat (char *stringRecibido, int largo);
 static int esAlfaNumerico(char str[]);
 
@@ -93,7 +94,6 @@ static int getString ( char *cadena, int tamMax){
 	{
 		retorno=0;
 		*pResultado=atoi(buffer);
-
 	}
 
 	return retorno;
@@ -179,11 +179,8 @@ static  int esTextoBasico(char* cadena){
 
  		//if(cadena[i]<'A'||(cadena[i]>'Z'&&cadena[i]<'a')||(cadena[i]>'z'&&cadena[i]<'ñ')||cadena[i]>'Ñ'){
 
- 		if(		cadena[i]<32 ||
- 				(cadena[i]>32&&cadena[i]<65) ||
-				(cadena[i]>90&&cadena[i]<97) ||
- 				(cadena[i]>122&&cadena[i]<164) ||
-				cadena[i]>165)
+ 		if((cadena[i] < 'A' || cadena[i] > 'Z') && (cadena[i] < 'a' || cadena[i] > 'z') &&
+ 				(cadena[i]< 'ñ' || cadena[i] > 'Ñ'))
  		{
 
  			retorno=0;
@@ -338,19 +335,16 @@ int utn_getAlphaNumerico(char* pResultado, char* mensaje,char* mensajeError, int
 
 }
 
-int PrimerasLetrasMayuscula(char*mensaje){
+int PrimerasLetrasMayuscula(char* mensaje){
 
-	int i;
-	strlwr(mensaje);
-	mensaje[0]=toupper(mensaje[0]);
+	int retorno = -1;
 
-	for(i=1;mensaje[i]!='\0';i++){
-
-		if(isspace(mensaje[i])){
-			mensaje[i+1]=toupper(mensaje[i+1]);
-		}
+	if (mensaje!= NULL) {
+		strlwr(mensaje);
+		mensaje[0]=toupper(mensaje[0]);
+		retorno = 1;
 	}
-	return 1;
+	return retorno;
 }
 int ConcatenarNombreYApellido(char*nombre,char*apellido,char*nombreCompleto,int tam){
 	int retorno=0;

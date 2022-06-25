@@ -68,134 +68,7 @@ int CalcularPrecioUnitario (float dividendo, float divisor, float* resultado )
 	return retorno;
 }
 
-int InformarOpcionesCostosAgencia (int porcentajeDescuento, int porcentajeAumento, char* agencia1, char* agencia2)
-{
-	int retorno = -1;
 
-	if (porcentajeAumento > 0 && porcentajeDescuento > 0 ) {
-
-		retorno = 0;
-		//Mostrar lo que se va a calcular
-		printf(
-				"\nCalcular: \n"
-				"\na) Tarjeta de débito (descuento %d porciento ) \n"
-				"b) Tarjeta de crédito (interés %d porciento )  \n"
-				"c) Bitcoin (1BTC -> 4606954.55 Pesos Argentinos)\n"
-				"d) Mostrar precio por km (precio unitario)\n"
-				"e) Mostrar diferencia de precio ingresada (%s - %s)\n",
-				porcentajeDescuento,
-				porcentajeAumento,
-				agencia1,
-				agencia2);
-
-
-		printf("\nTodos los costos calculados!!!\n\n");
-	}
-	return retorno;
-}
-int CalcularCostosAgencia (char* nombreAgencia,float precio, float kilometros, int porcentajeDescuento, int porcentajeAumento, float* descuento ,float* aumento ,float* convercionBitcoin, float* precioUnitario)
-{
-	int retorno = -1;
-
-	if(	kilometros > 0
-			&&
-			precio > 0
-			&&
-			nombreAgencia != NULL
-			&&
-			porcentajeDescuento > 0
-			&&
-			porcentajeAumento > 0
-			&&
-			descuento != NULL
-			&&
-			aumento != NULL
-			&&
-			convercionBitcoin !=NULL
-			&&
-			precioUnitario !=NULL
-	 )
-
-	{
-		if (
-				!CalcularDescuento(precio, porcentajeDescuento, descuento)
-				&&
-				!CalcularAumento(precio, porcentajeAumento, aumento)
-				&&
-				!DePesosAbitcoin(precio, convercionBitcoin )
-				&&
-				!CalcularPrecioUnitario(precio, kilometros,precioUnitario)
-		)
-		{
-
-			retorno = 0;
-		}
-	}
-
-	return retorno;
-}
-
-int printfCostosAgencia(char* nombreAgencia,float precio, float descuento, float aumento, float convercionBitcoin, float precioUnitario )
-{
-	int retorno = -1;
-
-	if (nombreAgencia != NULL
-			&&
-			precio > 0
-			&&
-			descuento > 0
-			&&
-			aumento > 0
-			&&
-			convercionBitcoin > 0
-			&&
-			precioUnitario > 0)
-	{
-
-		retorno = 0;
-
-
-		printf(	"\nPrecio %s: $%0.2f\n"
-				"Precio con tarjeta de débito: $ %0.2f\n"
-				"Precio con tarjeta de crédito: $ %0.2f\n"
-				"Precio pagando con bitcoin: %0.10f BTC\n"
-				"Precio unitario: $ %0.2f\n\n",
-				nombreAgencia,precio,
-				descuento,
-				aumento,
-				convercionBitcoin,
-				precioUnitario);
-	}
-
-	return retorno;
-}
-int HardcodearDatosAgenciasDeVuelo (char* nombreAgencia, float kilometros, float precio, float porcentajeDescuento, float porcentajeAumento )
-{
-	int retorno = -1;
-	float descuento;
-	float aumento;
-	float convercionBTC;
-	float precioUnitario;
-
-	if (nombreAgencia != NULL
-			&&
-			precio > 0
-			&&
-			kilometros > 0)
-	{
-
-		// Funcion 3)
-
-		if (!CalcularCostosAgencia(nombreAgencia, precio, kilometros, porcentajeDescuento, porcentajeAumento, &descuento, &aumento, &convercionBTC, &precioUnitario)) {
-
-			// Funcion 4
-			printfCostosAgencia(nombreAgencia, precio,  descuento, aumento, convercionBTC, precioUnitario);
-			retorno = 0;
-		}
-	}
-
-	return retorno;
-}
 
 
 float Sumar (float a, float b){
@@ -795,6 +668,8 @@ void MenuEnteros (int listaEnteros[], int tam, char mensaje[], char mensajeError
 	int OrdenarVector;
 	int maximoArray;
 	float promedioPositivos;
+	int mostrarTipo;
+	int contadorVueltas;
 
 		do{
 			printf("Menu de Arrays: \n 1-Inicializar Array \n 2-Cargar Array \n 3-Mostrar Array\n 4-Calcular Promedio Array \n 5-Ordenar Array \n 6-Salir del Menu \n");
@@ -805,7 +680,7 @@ void MenuEnteros (int listaEnteros[], int tam, char mensaje[], char mensajeError
 			switch(opcion){
 
 			case 1:
-				printf("Ud. ha seleccionado lo opción 1-Inicializar \n");
+				printf("Ud. ha seleccionado lo opciï¿½n 1-Inicializar \n");
 				InicializarVectorEnteroExcluyente(listaEnteros, tam, 0);
 				printf("Inicializacion Completa!!!");
 				system("pause");
@@ -813,7 +688,7 @@ void MenuEnteros (int listaEnteros[], int tam, char mensaje[], char mensajeError
 				break;
 
 			case 2:
-				printf("“Ud. ha seleccionado lo opción 2-Cargar \n");
+				printf("ï¿½Ud. ha seleccionado lo opciï¿½n 2-Cargar \n");
 				tipoArray=IngresarNumeroEntero("\n 1 = Carga Secuencial 2 = Carga Aleatoria: ", "\n\a [ERROR]1 = Carga Secuencial 2 = Carga Aleatoria: ", 0, 3);
 				if(tipoArray==1){
 
@@ -833,9 +708,8 @@ void MenuEnteros (int listaEnteros[], int tam, char mensaje[], char mensajeError
 
 			case 3:
 
-				int mostrarTipo;
 
-				printf("“Ud. ha seleccionado lo opción 3-Mostrar \n");
+				printf("ï¿½Ud. ha seleccionado lo opciï¿½n 3-Mostrar \n");
 
 				mostrarTipo=IngresarNumeroEntero("\n 1 = Mostar Array, 2 = Mostrar Maximo Del Array:  ", "Reingrese las opciones sugeridas: ", 0, 3);
 
@@ -862,7 +736,7 @@ void MenuEnteros (int listaEnteros[], int tam, char mensaje[], char mensajeError
 				break;
 
 			case 4:
-				printf("“Ud. ha seleccionado lo opción 4-Calcular Promedio \n");
+				printf("ï¿½Ud. ha seleccionado lo opciï¿½n 4-Calcular Promedio \n");
 
 				if(PromedearVectorEnteroPositivos(listaEnteros, tam, &promedioPositivos)==1){
 
@@ -880,9 +754,9 @@ void MenuEnteros (int listaEnteros[], int tam, char mensaje[], char mensajeError
 
 			case 5:
 
-				int contadorVueltas;
 
-				printf("“Ud. ha seleccionado lo opción 5-Ordenar \n");
+
+				printf("ï¿½Ud. ha seleccionado lo opciï¿½n 5-Ordenar \n");
 
 				OrdenarVector=IngresarNumeroEntero("\n 1 = Creciente  2 = Decreciente: ", "\n\a[ERROR] 1 = Creciente  2 = Decreciente: ", 0, 3);
 
@@ -933,7 +807,7 @@ float ValidacionTemperaturaFyC (float temperaturaF){
 
 	while(temperaturaF<=0 || temperaturaF>=211 ){
 
-		printf("Error, reingrese una temperatura en fahrenheit entre 32ºF y 211.3ºF: ");
+		printf("Error, reingrese una temperatura en fahrenheit entre 32ï¿½F y 211.3ï¿½F: ");
 		scanf("%f", &temperaturaF);
 	}
 
@@ -945,7 +819,7 @@ int ValidacionTemperaturaCyF (float temperaturaC){
 
 	while(temperaturaC<=0 || temperaturaC>=100 ){
 
-		printf("Error, reingrese una temperatura en celsius entre 1ºC y 99ºC: ");
+		printf("Error, reingrese una temperatura en celsius entre 1ï¿½C y 99ï¿½C: ");
 		scanf("%f", &temperaturaC);
 	}
 
@@ -965,7 +839,7 @@ void PedirTemperaturaF (char mensaje[]){
 
 	gradosFaC=(temperaturaF-32.00)*0.556;
 
-	printf("%.2f °F son %.2f °C centigrados.\n", temperaturaFvalida,gradosFaC);
+	printf("%.2f ï¿½F son %.2f ï¿½C centigrados.\n", temperaturaFvalida,gradosFaC);
 
 
 }
@@ -983,6 +857,6 @@ void PedirTemperaturaC (char mensaje[]){
 
 	gradosCaF=(temperaturaC*9/5)+32;
 
-	printf("%d °C son %d °F centigrados.\n", temperaturaCvalida,gradosCaF);
+	printf("%d ï¿½C son %d ï¿½F centigrados.\n", temperaturaCvalida,gradosCaF);
 
 }

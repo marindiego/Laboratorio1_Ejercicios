@@ -11,6 +11,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <windows.h>
+#include <limits.h>
+#include <ctype.h>
 #include "funciones_matematicasTP.h"
 
 

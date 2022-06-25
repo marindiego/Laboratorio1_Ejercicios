@@ -12,7 +12,7 @@
 #include "utn_funciones.h"
 
 int IntercambioCaracterComodin (char *cadena, char caracterComodin);
-int CalcularDivisoresDeUnNumero (int numero, int* divisores);
+int CalcularDivisoresDeUnNumero (int numeroIngresado);
 
 int main(void) {
 
@@ -64,7 +64,7 @@ int main(void) {
 	int divisores;
 	int numeroIngresado = 10;
 
-	if(!CalcularDivisoresDeUnNumero(numeroIngresado,&divisores)){
+	if((divisores = CalcularDivisoresDeUnNumero(numeroIngresado))>0){
 
 		printf("Cantida encontradas: %d", divisores);
 	}
@@ -80,7 +80,7 @@ int IntercambioCaracterComodin (char *cadena, char caracterComodin){
 	int i;
 	int contadorVocales=0;
 
-	if(cadena!= NULL &&  caracterComodin != NULL){
+	if(cadena!= NULL &&  !isdigit(caracterComodin)){
 
 		strlwr(cadena);
 

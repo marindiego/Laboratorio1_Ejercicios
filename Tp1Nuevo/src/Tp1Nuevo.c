@@ -8,7 +8,7 @@
  ============================================================================
  */
 
-#include "utn_funciones.h"
+#include "Agencia.h"
 
 #define DESCUENTO 10
 #define INTERESES 15

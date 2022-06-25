@@ -166,7 +166,7 @@ static int esNumerica(char* cadena, int limite){
 
  	for( ;cadena[i]!='\0';i++){
 
- 		//if(cadena[i]<'A'||(cadena[i]>'Z'&&cadena[i]<'a')||(cadena[i]>'z'&&cadena[i]<'ñ')||cadena[i]>'Ñ'){
+ 		//if(cadena[i]<'A'||(cadena[i]>'Z'&&cadena[i]<'a')||(cadena[i]>'z'&&cadena[i]<'ï¿½')||cadena[i]>'ï¿½'){
 
  		if(		cadena[i]<32 ||
 				(cadena[i]>32&&cadena[i]<65) ||

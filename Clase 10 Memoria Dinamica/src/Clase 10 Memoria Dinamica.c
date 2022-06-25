@@ -11,6 +11,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+typedef struct{
+    int id;
+    char descripcion[10];
+}eProducto;
+
 int initArray (int*pArray, int limite, int valor){
 
 	int retorno=-1;
@@ -56,6 +61,33 @@ int resizeArray (int**pArray, int* sizeActual, int sizeNuevo){
 	return retorno;
 }
 
+
+eProducto* CargarProducto ();
+eProducto* CargarProducto ()
+{
+    eProducto* pProducto = NULL;
+
+    if ((pProducto = (eProducto*) malloc(sizeof(eProducto)))!=NULL) {
+
+    	return pProducto;
+	}
+
+    return pProducto;
+}
+
+eProducto* CargarDivisionParametros (int id, char* descripcion);
+eProducto* CargarDivisionParametros (int id, char* descripcion)
+{
+	eProducto* pProducto = CargarProducto();
+
+	if ((pProducto = (eProducto*) malloc(sizeof(eProducto)))!=NULL) {
+
+		pProducto->id = id;
+		strcpy(pProducto->descripcion,descripcion);
+	}
+
+	return pProducto;
+}
 int main(void) {
 
 	setbuf(stdout,NULL);
@@ -119,6 +151,38 @@ int main(void) {
 	}
 
 	free(pArrayEdades);
+
+	eProducto* pProducto;
+
+	pProducto = CargarDivisionParametros(1, "Iphone");
+
+
+
+	if (pProducto != NULL ) {
+
+		printf("Dir: %p -- Dir: %p\n", pProducto, &pProducto);
+
+		printf("%d, %s\n", pProducto->id, pProducto->descripcion);
+		printf("%d, %s\n", pProducto->id, pProducto->descripcion);
+		printf("%d, %s\n", pProducto->id, pProducto->descripcion);
+		printf("%d, %s\n", pProducto->id, pProducto->descripcion);
+	}
+
+
+	/*
+	 *
+	 * Dir: 0000000000152490 -- Dir: 000000000062fe18
+		1, Iphone
+		1, Iphone
+		1, I	phone
+		1, Iphone
+	    *
+	    */
+	/*
+	 * ----------------------------------------------------------------------------
+	 * */
+
+
 
 	return EXIT_SUCCESS;
 }

@@ -414,7 +414,6 @@ int BuscarMenorPorTipo (sProducto listaProductos[], int tam, stipoProducto lista
 {
     int retorno = -1;
     int indice;
-    int banderaMenor;
     float  precioMinimo;
 
     indice = BuscarIndiceTipo (idTipo, listaTipos, sizeTipo);

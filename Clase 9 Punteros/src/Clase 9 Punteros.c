@@ -20,19 +20,19 @@ int main(void) {
 
 	setbuf(stdout,NULL);
 
-	int a=5;
+	int d=5;
 	int b;
 	int* p;
 
-	printf("Size a: %lld\n",sizeof(a)); //4
-	printf("Direccion a: %p\n",&a); // direccion de memoria de a
+	p = &d;
+
+	printf("Size a: %d\n",sizeof(d)); //4
+	printf("Direccion a: %p\n",d); // direccion de memoria de a
 
 	printf("Size b: %lld\n",sizeof(b)); //4
 	printf("Dirrecion b: %p\n",&b); // direccion de memoria de b
 
-	p=&a;
-
-	printf("\n%p\n", &a);
+	printf("\n%p\n", &d);
 	printf("%d\n", *p);
 	printf("%p\n", p);
 	printf("%p\n", &p);
@@ -111,7 +111,9 @@ int main(void) {
 
 	for (j = 0; j < 2; j++) {
 
-		//printf("%d %c\n", (*(p+j)).a,(*(p+j)).c );
+		//una forma
+		printf("%d %c\n", (*(p+j)).a,(*(p+j)).c );
+		//otra forma
 		printf("%d %c\n", (p+j)->a, (p+j)->c);
 	}
 
